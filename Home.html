@@ -128,6 +128,10 @@
             padding: 30px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
         .section-box:hover {
@@ -137,133 +141,88 @@
 
         .section-header {
             display: flex;
+            flex-direction: column;
             align-items: center;
             margin-bottom: 25px;
             padding-bottom: 15px;
             border-bottom: 2px solid #f0f0f0;
+            width: 100%;
         }
 
         .section-icon {
             background-color: #3498db;
             color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin-right: 15px;
-        }
-
-        .section-title {
-            font-size: 22px;
-            color: #2c3e50;
-        }
-
-        .search-section {
-            border-top: 5px solid #3498db;
-        }
-
-        .staff-section {
-            border-top: 5px solid #e74c3c;
-        }
-
-        .search-box {
-            display: flex;
-            margin-bottom: 25px;
-        }
-
-        .search-input {
-            flex: 1;
-            padding: 15px 20px;
-            border: 2px solid #ddd;
-            border-radius: 8px 0 0 8px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: #3498db;
-        }
-
-        .search-button {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 0 25px;
-            border-radius: 0 8px 8px 0;
-            cursor: pointer;
-            font-size: 18px;
-            transition: background-color 0.3s;
-        }
-
-        .search-button:hover {
-            background-color: #2980b9;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-
-        .feature {
-            display: flex;
-            align-items: center;
-            padding: 12px 15px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            transition: background-color 0.3s;
-        }
-
-        .feature:hover {
-            background-color: #e9ecef;
-        }
-
-        .feature-icon {
-            background-color: #3498db;
-            color: white;
-            width: 36px;
-            height: 36px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 12px;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .staff-icon {
+            background-color: #e74c3c;
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .section-description {
+            color: #666;
             font-size: 16px;
+            max-width: 90%;
+            line-height: 1.6;
         }
 
-        .feature-text {
-            font-size: 15px;
-            font-weight: 500;
+        .button-container {
+            margin: 25px 0;
+            width: 100%;
         }
 
-        .staff-access {
-            text-align: center;
-            padding: 20px 0;
+        .action-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: white;
+            padding: 20px 40px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 400px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .search-button {
+            background-color: #3498db;
+            box-shadow: 0 6px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .search-button:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.4);
         }
 
         .staff-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
             background-color: #e74c3c;
-            color: white;
-            padding: 18px 35px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+            box-shadow: 0 6px 15px rgba(231, 76, 60, 0.3);
         }
 
         .staff-button:hover {
             background-color: #c0392b;
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(231, 76, 60, 0.4);
+            box-shadow: 0 10px 20px rgba(231, 76, 60, 0.4);
         }
 
         .link-info {
@@ -273,6 +232,7 @@
             border-radius: 8px;
             font-size: 14px;
             color: #666;
+            width: 100%;
         }
 
         .link-url {
@@ -281,6 +241,112 @@
             word-break: break-all;
             color: #3498db;
             font-weight: 500;
+        }
+
+        .staff-link-url {
+            color: #e74c3c;
+        }
+
+        .search-input-container {
+            width: 100%;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            margin-bottom: 15px;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .modal-title {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #7f8c8d;
+        }
+
+        .modal-close:hover {
+            color: #e74c3c;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+        }
+
+        .modal-button {
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .modal-search {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .modal-search:hover {
+            background-color: #2980b9;
+        }
+
+        .modal-cancel {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+
+        .modal-cancel:hover {
+            background-color: #d0d0d0;
         }
 
         footer {
@@ -311,6 +377,10 @@
 
         .instructions li {
             margin-bottom: 8px;
+        }
+
+        .button-icon {
+            font-size: 22px;
         }
     </style>
 </head>
@@ -343,50 +413,22 @@
         
         <div class="section-container">
             <!-- ส่วนที่ 1: ค้นหาพัสดุ -->
-            <section class="section-box search-section">
+            <section class="section-box">
                 <div class="section-header">
                     <div class="section-icon">
                         <i class="fas fa-search"></i>
                     </div>
                     <h2 class="section-title">ค้นหาพัสดุ</h2>
+                    <p class="section-description">
+                        ค้นหาข้อมูลพัสดุด้วยรหัสพัสดุหรือหมายเลขติดตาม เพื่อดูสถานะและข้อมูลรายละเอียด
+                    </p>
                 </div>
                 
-                <p style="margin-bottom: 20px; color: #555;">
-                    ค้นหาข้อมูลพัสดุด้วยรหัสพัสดุหรือหมายเลขติดตาม เพื่อดูสถานะและข้อมูลรายละเอียด
-                </p>
-                
-                <div class="search-box">
-                    <input type="text" class="search-input" placeholder="ป้อนรหัสพัสดุหรือหมายเลขติดตาม...">
-                    <button class="search-button">
-                        <i class="fas fa-search"></i>
+                <div class="button-container">
+                    <button class="action-button search-button" id="openSearchModal">
+                        <i class="fas fa-search button-icon"></i>
+                        คลิกเพื่อค้นหาพัสดุ
                     </button>
-                </div>
-                
-                <div class="features">
-                    <div class="feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-barcode"></i>
-                        </div>
-                        <div class="feature-text">ค้นหาด้วยรหัสพัสดุ</div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-truck"></i>
-                        </div>
-                        <div class="feature-text">ติดตามสถานะการจัดส่ง</div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-history"></i>
-                        </div>
-                        <div class="feature-text">ตรวจสอบประวัติพัสดุ</div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-print"></i>
-                        </div>
-                        <div class="feature-text">พิมพ์รายงานพัสดุ</div>
-                    </div>
                 </div>
                 
                 <div class="link-info">
@@ -398,38 +440,27 @@
             </section>
             
             <!-- ส่วนที่ 2: เฉพาะเจ้าหน้าที่ -->
-            <section class="section-box staff-section">
+            <section class="section-box">
                 <div class="section-header">
-                    <div class="section-icon">
+                    <div class="section-icon staff-icon">
                         <i class="fas fa-user-shield"></i>
                     </div>
                     <h2 class="section-title">เฉพาะเจ้าหน้าที่</h2>
+                    <p class="section-description">
+                        เข้าสู่ระบบจัดการพัสดุสำหรับเจ้าหน้าที่ เพื่อเพิ่ม แก้ไข หรือจัดการข้อมูลพัสดุในระบบ
+                    </p>
                 </div>
                 
-                <p style="margin-bottom: 20px; color: #555;">
-                    เข้าสู่ระบบจัดการพัสดุสำหรับเจ้าหน้าที่ เพื่อเพิ่ม แก้ไข หรือจัดการข้อมูลพัสดุในระบบ
-                </p>
-                
-                <div class="staff-access">
-                    <a href="https://script.google.com/macros/s/AKfycbzVoL5wajme-90EyCezElonbmnD-HFnbAyexkxhOHuRPP2v_wF9jAuzIxM0GrmzrU4Q/exec?page=add" target="_blank" class="staff-button">
-                        <i class="fas fa-sign-in-alt"></i>
+                <div class="button-container">
+                    <a href="https://script.google.com/macros/s/AKfycbzVoL5wajme-90EyCezElonbmnD-HFnbAyexkxhOHuRPP2v_wF9jAuzIxM0GrmzrU4Q/exec?page=add" target="_blank" class="action-button staff-button">
+                        <i class="fas fa-sign-in-alt button-icon"></i>
                         เข้าสู่ระบบจัดการพัสดุ
                     </a>
                 </div>
                 
-                <div class="instructions">
-                    <h3>สำหรับเจ้าหน้าที่พัสดุ</h3>
-                    <ul>
-                        <li>เพิ่มข้อมูลพัสดุใหม่เข้าสู่ระบบ</li>
-                        <li>อัพเดทสถานะการจัดส่งพัสดุ</li>
-                        <li>จัดการข้อมูลผู้รับและผู้ส่ง</li>
-                        <li>สร้างรายงานและสถิติพัสดุ</li>
-                    </ul>
-                </div>
-                
                 <div class="link-info">
                     <strong>ลิงค์ API เฉพาะเจ้าหน้าที่:</strong>
-                    <a href="https://script.google.com/macros/s/AKfycbzVoL5wajme-90EyCezElonbmnD-HFnbAyexkxhOHuRPP2v_wF9jAuzIxM0GrmzrU4Q/exec?page=add" target="_blank" class="link-url">
+                    <a href="https://script.google.com/macros/s/AKfycbzVoL5wajme-90EyCezElonbmnD-HFnbAyexkxhOHuRPP2v_wF9jAuzIxM0GrmzrU4Q/exec?page=add" target="_blank" class="link-url staff-link-url">
                         https://script.google.com/macros/s/AKfycbzVoL5wajme-90EyCezElonbmnD-HFnbAyexkxhOHuRPP2v_wF9jAuzIxM0GrmzrU4Q/exec?page=add
                     </a>
                 </div>
@@ -439,11 +470,35 @@
         <div class="instructions">
             <h3>คำแนะนำการใช้งาน</h3>
             <ul>
-                <li><strong>สำหรับผู้ใช้งานทั่วไป:</strong> ใช้ส่วนค้นหาพัสดุเพื่อติดตามสถานะพัสดุของคุณ</li>
-                <li><strong>สำหรับเจ้าหน้าที่:</strong> ใช้ส่วนเฉพาะเจ้าหน้าที่เพื่อเข้าสู่ระบบจัดการพัสดุ</li>
+                <li><strong>สำหรับผู้ใช้งานทั่วไป:</strong> ใช้ปุ่ม "คลิกเพื่อค้นหาพัสดุ" เพื่อติดตามสถานะพัสดุของคุณ</li>
+                <li><strong>สำหรับเจ้าหน้าที่:</strong> ใช้ปุ่ม "เข้าสู่ระบบจัดการพัสดุ" เพื่อเข้าสู่ระบบจัดการพัสดุ</li>
                 <li>ระบบนี้รองรับการทำงานบน Google Apps Script สำหรับจัดการข้อมูลพัสดุ</li>
                 <li>สามารถเข้าถึงระบบผ่านเบราว์เซอร์บนคอมพิวเตอร์และมือถือได้</li>
             </ul>
+        </div>
+    </div>
+    
+    <!-- Modal สำหรับค้นหาพัสดุ -->
+    <div class="modal" id="searchModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <h3 class="modal-title">
+                <i class="fas fa-search"></i>
+                ค้นหาพัสดุ
+            </h3>
+            <p>กรุณากรอกรหัสพัสดุหรือหมายเลขติดตามเพื่อค้นหาข้อมูล</p>
+            
+            <div class="search-input-container" style="display: block;">
+                <input type="text" class="search-input" id="trackingInput" placeholder="ป้อนรหัสพัสดุหรือหมายเลขติดตาม...">
+            </div>
+            
+            <div class="modal-actions">
+                <button class="modal-button modal-cancel" id="cancelSearch">ยกเลิก</button>
+                <button class="modal-button modal-search" id="performSearch">
+                    <i class="fas fa-search"></i>
+                    ค้นหาพัสดุ
+                </button>
+            </div>
         </div>
     </div>
     
@@ -452,10 +507,26 @@
     </footer>
 
     <script>
+        // เปิด Modal ค้นหาพัสดุ
+        document.getElementById('openSearchModal').addEventListener('click', function() {
+            document.getElementById('searchModal').style.display = 'flex';
+            document.getElementById('trackingInput').focus();
+        });
+        
+        // ปิด Modal
+        document.getElementById('closeModal').addEventListener('click', closeModal);
+        document.getElementById('cancelSearch').addEventListener('click', closeModal);
+        
+        // ปิด Modal เมื่อคลิกนอกพื้นที่
+        document.getElementById('searchModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+        
         // ฟังก์ชันค้นหาพัสดุ
-        document.querySelector('.search-button').addEventListener('click', function() {
-            const searchInput = document.querySelector('.search-input');
-            const searchValue = searchInput.value.trim();
+        document.getElementById('performSearch').addEventListener('click', function() {
+            const searchValue = document.getElementById('trackingInput').value.trim();
             
             if (searchValue) {
                 // สร้าง URL สำหรับค้นหาพัสดุ
@@ -464,23 +535,92 @@
                 // เปิดลิงค์ค้นหาในหน้าต่างใหม่
                 window.open(searchUrl, '_blank');
                 
-                // แสดงข้อความแจ้งผู้ใช้
-                alert(`กำลังค้นหาพัสดุ: ${searchValue}\nระบบจะเปิดหน้าต่างใหม่สำหรับแสดงผลการค้นหา`);
+                // ปิด Modal
+                closeModal();
                 
                 // ล้างช่องค้นหา
-                searchInput.value = '';
+                document.getElementById('trackingInput').value = '';
+                
+                // แสดงข้อความแจ้งผู้ใช้
+                showNotification(`กำลังค้นหาพัสดุ: ${searchValue}`, 'success');
             } else {
-                alert('กรุณาป้อนรหัสพัสดุหรือหมายเลขติดตาม');
-                searchInput.focus();
+                showNotification('กรุณาป้อนรหัสพัสดุหรือหมายเลขติดตาม', 'error');
+                document.getElementById('trackingInput').focus();
             }
         });
         
         // ฟังก์ชันกด Enter เพื่อค้นหา
-        document.querySelector('.search-input').addEventListener('keypress', function(e) {
+        document.getElementById('trackingInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
-                document.querySelector('.search-button').click();
+                document.getElementById('performSearch').click();
             }
         });
+        
+        // ฟังก์ชันปิด Modal
+        function closeModal() {
+            document.getElementById('searchModal').style.display = 'none';
+            document.getElementById('trackingInput').value = '';
+        }
+        
+        // ฟังก์ชันแสดงการแจ้งเตือน
+        function showNotification(message, type) {
+            // สร้าง element สำหรับการแจ้งเตือน
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.position = 'fixed';
+            notification.style.top = '20px';
+            notification.style.right = '20px';
+            notification.style.padding = '15px 20px';
+            notification.style.borderRadius = '8px';
+            notification.style.color = 'white';
+            notification.style.fontWeight = '600';
+            notification.style.zIndex = '1001';
+            notification.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+            notification.style.animation = 'slideIn 0.3s ease';
+            
+            if (type === 'success') {
+                notification.style.backgroundColor = '#2ecc71';
+            } else {
+                notification.style.backgroundColor = '#e74c3c';
+            }
+            
+            document.body.appendChild(notification);
+            
+            // ลบการแจ้งเตือนหลังจาก 3 วินาที
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+        
+        // เพิ่ม CSS animation สำหรับการแจ้งเตือน
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
         
         // จำลองการแสดงผลสำหรับตัวอย่าง
         console.log('หน้าแผนกพัสดุพร้อมใช้งาน');
