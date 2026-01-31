@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>แผนกพัสดุ - ระบบจัดการพัสดุ</title>
+    <title>ระบบค้นหารหัสเบิกของ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Noto+Sans+Thai:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #f5f7fa;
+            font-family: 'Noto Sans Thai', 'Kanit', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
             line-height: 1.6;
         }
 
@@ -23,609 +27,288 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            flex: 1;
         }
 
+        /* Header Styles */
         header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 20px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 0 0 10px 10px;
-            margin-bottom: 30px;
-        }
-
-        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px 0;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
-        .logo-section {
+        .logo {
             display: flex;
             align-items: center;
             gap: 15px;
         }
 
-        .logo {
-            background-color: #3498db;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+        .logo-icon {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(30, 60, 114, 0.2);
+        }
+
+        .logo-icon i {
+            font-size: 28px;
+            color: white;
         }
 
         .logo-text h1 {
-            font-size: 24px;
-            font-weight: 700;
+            font-size: 28px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
         }
 
         .logo-text p {
+            color: #666;
             font-size: 14px;
-            opacity: 0.9;
+            font-weight: 400;
         }
 
-        .user-info {
+        /* Button Container */
+        .button-container {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 10px;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 8px 15px;
-            border-radius: 30px;
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
         }
 
-        .user-icon {
-            background-color: #3498db;
-            width: 36px;
-            height: 36px;
+        .button-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .button-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .button-card.search {
+            border-top: 5px solid #3498db;
+        }
+
+        .button-card.staff {
+            border-top: 5px solid #2ecc71;
+        }
+
+        .icon-wrapper {
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 42px;
+            color: white;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .main-title {
-            text-align: center;
-            margin-bottom: 40px;
+        .search .icon-wrapper {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        }
+
+        .staff .icon-wrapper {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+        }
+
+        .button-card h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: 600;
             color: #2c3e50;
-            position: relative;
-            padding-bottom: 15px;
         }
 
-        .main-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background-color: #3498db;
-            border-radius: 2px;
+        .button-card p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .section-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 40px;
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            font-size: 18px;
+            font-weight: 500;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Noto Sans Thai', 'Kanit', sans-serif;
+            min-width: 200px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        @media (max-width: 768px) {
-            .section-container {
-                grid-template-columns: 1fr;
+        .btn-search {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+        }
+
+        .btn-search:hover {
+            background: linear-gradient(135deg, #2980b9 0%, #1f639b 100%);
+            transform: scale(1.05);
+        }
+
+        .btn-staff {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+        }
+
+        .btn-staff:hover {
+            background: linear-gradient(135deg, #27ae60 0%, #219653 100%);
+            transform: scale(1.05);
+        }
+
+        /* Footer Styles */
+        footer {
+            margin-top: 60px;
+            padding: 25px 0;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .button-container {
+                flex-direction: row;
+                justify-content: center;
+                gap: 50px;
+            }
+            
+            .button-card {
+                width: 380px;
+            }
+            
+            .logo-text h1 {
+                font-size: 32px;
             }
         }
 
-        .section-box {
-            background-color: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .section-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
-        }
-
-        .section-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f0f0f0;
-            width: 100%;
-        }
-
-        .section-icon {
-            background-color: #3498db;
-            color: white;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
-
-        .staff-icon {
-            background-color: #e74c3c;
-        }
-
-        .section-title {
-            font-size: 24px;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .section-description {
-            color: #666;
-            font-size: 16px;
-            max-width: 90%;
-            line-height: 1.6;
-        }
-
-        .button-container {
-            margin: 25px 0;
-            width: 100%;
-        }
-
-        .action-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            color: white;
-            padding: 20px 40px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-size: 20px;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-            width: 100%;
-            max-width: 400px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .search-button {
-            background-color: #3498db;
-            box-shadow: 0 6px 15px rgba(52, 152, 219, 0.3);
-        }
-
-        .search-button:hover {
-            background-color: #2980b9;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.4);
-        }
-
-        .staff-button {
-            background-color: #e74c3c;
-            box-shadow: 0 6px 15px rgba(231, 76, 60, 0.3);
-        }
-
-        .staff-button:hover {
-            background-color: #c0392b;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(231, 76, 60, 0.4);
-        }
-
-        .link-info {
-            margin-top: 25px;
-            padding: 15px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            font-size: 14px;
-            color: #666;
-            width: 100%;
-        }
-
-        .link-url {
-            display: block;
-            margin-top: 8px;
-            word-break: break-all;
-            color: #3498db;
-            font-weight: 500;
-        }
-
-        .staff-link-url {
-            color: #e74c3c;
-        }
-
-        .search-input-container {
-            width: 100%;
-            margin: 20px 0;
-            display: none;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 16px 20px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-            margin-bottom: 15px;
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: #3498db;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background-color: white;
-            padding: 30px;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
-
-        .modal-title {
-            color: #2c3e50;
-            margin-bottom: 20px;
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 24px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #7f8c8d;
-        }
-
-        .modal-close:hover {
-            color: #e74c3c;
-        }
-
-        .modal-actions {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 25px;
-        }
-
-        .modal-button {
-            padding: 12px 24px;
-            border-radius: 8px;
-            border: none;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .modal-search {
-            background-color: #3498db;
-            color: white;
-        }
-
-        .modal-search:hover {
-            background-color: #2980b9;
-        }
-
-        .modal-cancel {
-            background-color: #e0e0e0;
-            color: #333;
-        }
-
-        .modal-cancel:hover {
-            background-color: #d0d0d0;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            padding: 20px;
-            color: #7f8c8d;
-            font-size: 14px;
-            border-top: 1px solid #eee;
-        }
-
-        .instructions {
-            margin-top: 25px;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            border-left: 4px solid #3498db;
-        }
-
-        .instructions h3 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .instructions ul {
-            padding-left: 20px;
-        }
-
-        .instructions li {
-            margin-bottom: 8px;
-        }
-
-        .button-icon {
-            font-size: 22px;
+        @media (max-width: 767px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .button-card {
+                padding: 30px 20px;
+            }
+            
+            .icon-wrapper {
+                width: 80px;
+                height: 80px;
+                font-size: 34px;
+            }
+            
+            .button-card h2 {
+                font-size: 24px;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="logo-section">
-                <div class="logo">
-                    <i class="fas fa-box-open"></i>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-boxes"></i>
                 </div>
                 <div class="logo-text">
-                    <h1>แผนกพัสดุ</h1>
-                    <p>ระบบจัดการพัสดุและติดตามสถานะ</p>
+                    <h1>ระบบค้นหารหัสเบิกของ</h1>
+                    <p>Code Item Inventory System</p>
                 </div>
             </div>
-            <div class="user-info">
-                <div class="user-icon">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div>
-                    <div>เจ้าหน้าที่พัสดุ</div>
-                    <div style="font-size: 12px;">ผู้ใช้งานระบบ</div>
-                </div>
-            </div>
-        </div>
-    </header>
+        </header>
 
-    <div class="container">
-        <h2 class="main-title">ระบบจัดการพัสดุ</h2>
-        
-        <div class="section-container">
-            <!-- ส่วนที่ 1: ค้นหาพัสดุ -->
-            <section class="section-box">
-                <div class="section-header">
-                    <div class="section-icon">
+        <main>
+            <div class="button-container">
+                <div class="button-card search">
+                    <div class="icon-wrapper">
                         <i class="fas fa-search"></i>
                     </div>
-                    <h2 class="section-title">ค้นหาพัสดุ</h2>
-                    <p class="section-description">
-                        ค้นหาข้อมูลพัสดุด้วยรหัสพัสดุหรือหมายเลขติดตาม เพื่อดูสถานะและข้อมูลรายละเอียด
-                    </p>
-                </div>
-                
-                <div class="button-container">
-                    <button class="action-button search-button" id="openSearchModal">
-                        <i class="fas fa-search button-icon"></i>
-                        คลิกเพื่อค้นหาพัสดุ
-                    </button>
-                </div>
-                
-                <div class="link-info">
-                    <strong>ลิงค์ API ค้นหาพัสดุ:</strong>
-                    <a href="https://script.google.com/macros/s/AKfycbyHzP1k32a2AFrCSaid6Zk4irgehpCyy5CAl5NiuxqGL-PVqXb43YFoKRbYCFWyy401NA/exec" target="_blank" class="link-url">
-                        https://script.google.com/macros/s/AKfycbyHzP1k32a2AFrCSaid6Zk4irgehpCyy5CAl5NiuxqGL-PVqXb43YFoKRbYCFWyy401NA/exec
+                    <h2>ค้นหาพัสดุ</h2>
+                    <p>ค้นหาข้อมูลพัสดุ ค้นหารหัสเบิกของ</p>
+                    <a href="https://script.google.com/macros/s/AKfycbyHzP1k32a2AFrCSaid6Zk4irgehpCyy5CAl5NiuxqGL-PVqXb43YFoKRbYCFWyy401NA/exec" class="btn btn-search" target="_blank">
+                        <i class="fas fa-search"></i> คลิกเพื่อค้นหา
                     </a>
                 </div>
-            </section>
-            
-            <!-- ส่วนที่ 2: เฉพาะเจ้าหน้าที่ -->
-            <section class="section-box">
-                <div class="section-header">
-                    <div class="section-icon staff-icon">
+
+                <div class="button-card staff">
+                    <div class="icon-wrapper">
                         <i class="fas fa-user-shield"></i>
                     </div>
-                    <h2 class="section-title">เฉพาะเจ้าหน้าที่</h2>
-                    <p class="section-description">
-                        เข้าสู่ระบบจัดการพัสดุสำหรับเจ้าหน้าที่ เพื่อเพิ่ม แก้ไข หรือจัดการข้อมูลพัสดุในระบบ
-                    </p>
-                </div>
-                
-                <div class="button-container">
-                    <a href="https://script.google.com/macros/s/AKfycbzVoL5wajme-90EyCezElonbmnD-HFnbAyexkxhOHuRPP2v_wF9jAuzIxM0GrmzrU4Q/exec?page=add" target="_blank" class="action-button staff-button">
-                        <i class="fas fa-sign-in-alt button-icon"></i>
-                        เข้าสู่ระบบจัดการพัสดุ
+                    <h2>เจ้าหน้าที่คลัง</h2>
+                    <p>สำหรับเจ้าหน้าที่คลังพัสดุ เพื่อบันทึกข้อมูลพัสดุและจัดการระบบ</p>
+                    <a href="https://script.google.com/macros/s/AKfycbzVoL5wajme-90EyCezElonbmnD-HFnbAyexkxhOHuRPP2v_wF9jAuzIxM0GrmzrU4Q/exec?page=add" class="btn btn-staff" target="_blank">
+                        <i class="fas fa-user-tie"></i> เข้าสู่ระบบเจ้าหน้าที่
                     </a>
                 </div>
-                
-                <div class="link-info">
-                    <strong>ลิงค์ API เฉพาะเจ้าหน้าที่:</strong>
-                    <a href="https://script.google.com/macros/s/AKfycbzVoL5wajme-90EyCezElonbmnD-HFnbAyexkxhOHuRPP2v_wF9jAuzIxM0GrmzrU4Q/exec?page=add" target="_blank" class="link-url staff-link-url">
-                        https://script.google.com/macros/s/AKfycbzVoL5wajme-90EyCezElonbmnD-HFnbAyexkxhOHuRPP2v_wF9jAuzIxM0GrmzrU4Q/exec?page=add
-                    </a>
-                </div>
-            </section>
-        </div>
-        
-        <div class="instructions">
-            <h3>คำแนะนำการใช้งาน</h3>
-            <ul>
-                <li><strong>สำหรับผู้ใช้งานทั่วไป:</strong> ใช้ปุ่ม "คลิกเพื่อค้นหาพัสดุ" เพื่อติดตามสถานะพัสดุของคุณ</li>
-                <li><strong>สำหรับเจ้าหน้าที่:</strong> ใช้ปุ่ม "เข้าสู่ระบบจัดการพัสดุ" เพื่อเข้าสู่ระบบจัดการพัสดุ</li>
-                <li>ระบบนี้รองรับการทำงานบน Google Apps Script สำหรับจัดการข้อมูลพัสดุ</li>
-                <li>สามารถเข้าถึงระบบผ่านเบราว์เซอร์บนคอมพิวเตอร์และมือถือได้</li>
-            </ul>
-        </div>
-    </div>
-    
-    <!-- Modal สำหรับค้นหาพัสดุ -->
-    <div class="modal" id="searchModal">
-        <div class="modal-content">
-            <button class="modal-close" id="closeModal">&times;</button>
-            <h3 class="modal-title">
-                <i class="fas fa-search"></i>
-                ค้นหาพัสดุ
-            </h3>
-            <p>กรุณากรอกรหัสพัสดุหรือหมายเลขติดตามเพื่อค้นหาข้อมูล</p>
-            
-            <div class="search-input-container" style="display: block;">
-                <input type="text" class="search-input" id="trackingInput" placeholder="ป้อนรหัสพัสดุหรือหมายเลขติดตาม...">
             </div>
-            
-            <div class="modal-actions">
-                <button class="modal-button modal-cancel" id="cancelSearch">ยกเลิก</button>
-                <button class="modal-button modal-search" id="performSearch">
-                    <i class="fas fa-search"></i>
-                    ค้นหาพัสดุ
-                </button>
-            </div>
-        </div>
+        </main>
     </div>
-    
+
     <footer>
-        <p>แผนกพัสดุ - ระบบจัดการพัสดุ &copy; 2023 | ออกแบบสำหรับใช้งานกับ Google Apps Script</p>
+        <div class="container">
+            <p>ระบบค้นหารหัสเบิกของ © 2026 แผนกคลังพัสดุ | Store Department</p>
+            <p>สำหรับใช้ในการทำงานภายในบริษัทเท่านั้น</p>
+        </div>
     </footer>
 
     <script>
-        // เปิด Modal ค้นหาพัสดุ
-        document.getElementById('openSearchModal').addEventListener('click', function() {
-            document.getElementById('searchModal').style.display = 'flex';
-            document.getElementById('trackingInput').focus();
-        });
-        
-        // ปิด Modal
-        document.getElementById('closeModal').addEventListener('click', closeModal);
-        document.getElementById('cancelSearch').addEventListener('click', closeModal);
-        
-        // ปิด Modal เมื่อคลิกนอกพื้นที่
-        document.getElementById('searchModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-        
-        // ฟังก์ชันค้นหาพัสดุ
-        document.getElementById('performSearch').addEventListener('click', function() {
-            const searchValue = document.getElementById('trackingInput').value.trim();
+        // เพิ่มเอฟเฟกต์เมื่อโหลดหน้าเว็บ
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.button-card');
             
-            if (searchValue) {
-                // สร้าง URL สำหรับค้นหาพัสดุ
-                const searchUrl = `https://script.google.com/macros/s/AKfycbyHzP1k32a2AFrCSaid6Zk4irgehpCyy5CAl5NiuxqGL-PVqXb43YFoKRbYCFWyy401NA/exec?search=${encodeURIComponent(searchValue)}`;
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
                 
-                // เปิดลิงค์ค้นหาในหน้าต่างใหม่
-                window.open(searchUrl, '_blank');
-                
-                // ปิด Modal
-                closeModal();
-                
-                // ล้างช่องค้นหา
-                document.getElementById('trackingInput').value = '';
-                
-                // แสดงข้อความแจ้งผู้ใช้
-                showNotification(`กำลังค้นหาพัสดุ: ${searchValue}`, 'success');
-            } else {
-                showNotification('กรุณาป้อนรหัสพัสดุหรือหมายเลขติดตาม', 'error');
-                document.getElementById('trackingInput').focus();
-            }
-        });
-        
-        // ฟังก์ชันกด Enter เพื่อค้นหา
-        document.getElementById('trackingInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                document.getElementById('performSearch').click();
-            }
-        });
-        
-        // ฟังก์ชันปิด Modal
-        function closeModal() {
-            document.getElementById('searchModal').style.display = 'none';
-            document.getElementById('trackingInput').value = '';
-        }
-        
-        // ฟังก์ชันแสดงการแจ้งเตือน
-        function showNotification(message, type) {
-            // สร้าง element สำหรับการแจ้งเตือน
-            const notification = document.createElement('div');
-            notification.textContent = message;
-            notification.style.position = 'fixed';
-            notification.style.top = '20px';
-            notification.style.right = '20px';
-            notification.style.padding = '15px 20px';
-            notification.style.borderRadius = '8px';
-            notification.style.color = 'white';
-            notification.style.fontWeight = '600';
-            notification.style.zIndex = '1001';
-            notification.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
-            notification.style.animation = 'slideIn 0.3s ease';
-            
-            if (type === 'success') {
-                notification.style.backgroundColor = '#2ecc71';
-            } else {
-                notification.style.backgroundColor = '#e74c3c';
-            }
-            
-            document.body.appendChild(notification);
-            
-            // ลบการแจ้งเตือนหลังจาก 3 วินาที
-            setTimeout(() => {
-                notification.style.animation = 'slideOut 0.3s ease';
                 setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
-        
-        // เพิ่ม CSS animation สำหรับการแจ้งเตือน
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideIn {
-                from {
-                    transform: translateX(100%);
-                    opacity: 0;
-                }
-                to {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
-            }
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 300 + (index * 200));
+            });
             
-            @keyframes slideOut {
-                from {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
-                to {
-                    transform: translateX(100%);
-                    opacity: 0;
-                }
+            // เพิ่มการยืนยันเมื่อคลิกปุ่มเจ้าหน้าที่
+            const staffBtn = document.querySelector('.btn-staff');
+            if(staffBtn) {
+                staffBtn.addEventListener('click', function(e) {
+                    const confirmed = confirm("หน้านี้สำหรับเจ้าหน้าที่คลังพัสดุเท่านั้น\nคุณแน่ใจว่าต้องการเข้าสู่ระบบเจ้าหน้าที่?");
+                    if(!confirmed) {
+                        e.preventDefault();
+                    }
+                });
             }
-        `;
-        document.head.appendChild(style);
-        
-        // จำลองการแสดงผลสำหรับตัวอย่าง
-        console.log('หน้าแผนกพัสดุพร้อมใช้งาน');
-        console.log('1. ลิงค์ค้นหาพัสดุ: https://script.google.com/macros/s/AKfycbyHzP1k32a2AFrCSaid6Zk4irgehpCyy5CAl5NiuxqGL-PVqXb43YFoKRbYCFWyy401NA/exec');
-        console.log('2. ลิงค์เฉพาะเจ้าหน้าที่: https://script.google.com/macros/s/AKfycbzVoL5wajme-90EyCezElonbmnD-HFnbAyexkxhOHuRPP2v_wF9jAuzIxM0GrmzrU4Q/exec?page=add');
+        });
     </script>
 </body>
 </html>
