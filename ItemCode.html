@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>จัดการข้อมูลคลังพัสดุ | Inventory Management</title>
+    <title>ระบบค้นหารหัสเบิกของ | Code Item Inventory System</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Noto+Sans+Thai:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
@@ -493,8 +493,8 @@
                     <i class="fas fa-warehouse"></i>
                 </div>
                 <div class="logo-text">
-                    <h1>ระบบจัดการคลังพัสดุ</h1>
-                    <p>Inventory Data Management System</p>
+                    <h1>ระบบค้นหารหัสเบิกของ</h1>
+                    <p>Code Item Inventory System</p>
                 </div>
             </div>
             
@@ -504,7 +504,7 @@
                 </div>
                 <div class="user-details">
                     <h3>เจ้าหน้าที่คลังพัสดุ</h3>
-                    <p>แผนกบริหารทรัพยากร</p>
+                    <p>แผนกคลังพัสดุ</p>
                 </div>
             </div>
         </header>
@@ -512,7 +512,7 @@
         <main>
             <div class="dashboard-title">
                 <h2>เมนูจัดการข้อมูลพัสดุ</h2>
-                <p>เลือกการดำเนินการที่ต้องการจากเมนูด้านล่าง เพื่อจัดการข้อมูลสินค้าในคลังพัสดุ</p>
+                <p>เลือกการดำเนินการที่ต้องการจากเมนูด้านล่าง เพื่อจัดการข้อมูลรหัสในคลังพัสดุ</p>
             </div>
 
             <div class="button-grid">
@@ -522,7 +522,7 @@
                         <i class="fas fa-plus-circle"></i>
                     </div>
                     <h3>เพิ่มข้อมูลพัสดุ</h3>
-                    <p>เพิ่มรายการสินค้าใหม่เข้าสู่ระบบคลังพัสดุ พร้อมระบุรายละเอียดและจำนวนคงคลัง</p>
+                    <p>เพิ่มรายการสินค้าใหม่เข้าสู่ระบบคลังพัสดุ พร้อมระบุรายละเอียด</p>
                     <a href="https://script.google.com/macros/s/AKfycbzVoL5wajme-90EyCezElonbmnD-HFnbAyexkxhOHuRPP2v_wF9jAuzIxM0GrmzrU4Q/exec?page=add" class="btn btn-add" id="addBtn">
                         <i class="fas fa-plus"></i> เพิ่มข้อมูล
                     </a>
@@ -534,7 +534,7 @@
                         <i class="fas fa-edit"></i>
                     </div>
                     <h3>แก้ไขข้อมูลพัสดุ</h3>
-                    <p>ปรับปรุงข้อมูลสินค้าที่มีอยู่ในระบบ อัพเดทรายละเอียด ราคา หรือจำนวนคงคลัง</p>
+                    <p>ปรับปรุงข้อมูลรหัสที่มีอยู่ในระบบ อัพเดทรายละเอียด</p>
                     <a href="https://script.google.com/macros/s/AKfycbzVoL5wajme-90EyCezElonbmnD-HFnbAyexkxhOHuRPP2v_wF9jAuzIxM0GrmzrU4Q/exec?page=edit" class="btn btn-edit">
                         <i class="fas fa-edit"></i> แก้ไขข้อมูล
                     </a>
@@ -546,32 +546,17 @@
                         <i class="fas fa-trash-alt"></i>
                     </div>
                     <h3>ลบข้อมูลพัสดุ</h3>
-                    <p>ลบรายการสินค้าออกจากระบบคลังพัสดุ เมื่อสินค้าหมดอายุหรือเลิกใช้งานแล้ว</p>
+                    <p>ลบรายการสินค้าออกจากระบบคลังพัสดุ</p>
                     <button class="btn btn-delete" id="deleteBtn">
                         <i class="fas fa-trash-alt"></i> ลบข้อมูล
                     </button>
                 </div>
             </div>
-
-            <div class="stats-panel">
-                <div class="stat-item">
-                    <div class="stat-number" id="totalItems">1,247</div>
-                    <div class="stat-label">รายการพัสดุทั้งหมด</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="lowStock">23</div>
-                    <div class="stat-label">สินค้าคงคลังน้อย</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="todayUpdates">12</div>
-                    <div class="stat-label">อัพเดทข้อมูลวันนี้</div>
-                </div>
-            </div>
         </main>
 
         <footer>
-            <p>© 2023 แผนกคลังพัสดุ | ระบบจัดการข้อมูลสินค้าคงคลัง | กรมศุลกากร</p>
-            <p>เวอร์ชัน 2.1 | สำหรับเจ้าหน้าที่คลังพัสดุเท่านั้น</p>
+            <p>ระบบค้นหารหัสเบิกของ | © 2026 แผนกคลังพัสดุ | พัฒนาโดย Sarawut.C</p>
+            <p>สำหรับใช้ภายในองค์กรเท่านั้น</p>
         </footer>
     </div>
 
