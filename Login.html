@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html>
+
+
+<head>
+
+  <base target="_top">
+
+  <style>
+
+    .inputtext {
+
+      width: 100%;
+
+      vertical-align: middle;
+
+      margin: 5px 10px 5px 0;
+
+      padding: 10px;
+
+      background-color: #ffffff;
+
+      border: 2px solid #000;
+
+      border-radius: 20px;
+
+      box-sizing: border-box;
+
+
+    }
+
+
+    .button {
+
+      width: 100%;
+
+      vertical-align: middle;
+
+      margin: 5px 10px 5px 0;
+
+      padding: 10px;
+
+      background-color: #F70E02;
+
+      border: 2px solid #000;
+
+      border-radius: 20px;
+
+      box-sizing: border-box;
+
+      text-transform: uppercase;
+
+      color:white;
+
+    }
+
+
+    div {
+
+      font-family: arial;
+
+      font-weight: bold;
+
+
+    }
+
+
+    #msg {
+
+      color: #F50707;
+
+    }
+
+
+    body {
+
+      overflow-y: hidden;
+
+      /* Hide vertical scrollbar */
+
+      overflow-x: hidden;
+
+      /* Hide horizontal scrollbar */
+
+     
+
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <center>
+
+    <center>
+
+      <div class="div1">
+
+        <form name="myform" method="post">
+
+
+          <input type="text" name="uname" class="inputtext" autocomplete="off" placeholder="กรุณากรอกรหัสพนักงาน">
+
+          <br>
+
+          <input type="password" name="pass" class="inputtext" autocomplete="off" placeholder="กรูณากรอกวันที่เริ่มงาน">
+
+          <br>
+
+          <div id="msg"></div>
+
+          <br>
+
+          <input type="button" class="button" name="log" id="logbutton" value="Login" onclick="myfunction()">
+
+          <br><br>
+
+        </form>
+
+      </div>
+
+    </center>
+
+  </center>
+
+  <script type="text/javascript">
+
+    function myfunction () {
+
+    var user = document.forms["myform"]["uname"].value;
+
+    var pass = document.forms["myform"]["pass"].value;
+
+    if ((user=="103010" && pass=="26032558")||(user=="104390" && pass=="19012565"))
+
+  {
+
+    window.open('https://docs.google.com/spreadsheets/d/1qMv5mmqbXeWLkVmF-B8WGmkH-9Iu6bozzXr3LLghLvw/edit?usp=sharing', '_blank');
+
+  }
+
+    else
+
+  {
+
+    document.getElementById("msg").innerHTML = "ชื่อผู้ใช้ หรือรหัสผ่านไม่ถูกต้อง";
+
+  }
+
+  }
+
+ 
+
+  </script>
+
+</body>
+
+
+
+</html>
